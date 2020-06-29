@@ -106,6 +106,7 @@ const Loader = styled.div`
 
 const Items = styled.div`
   display: flex;
+  justify-content: space-around;
 `;
 
 const WeatherWrap = styled.div`

@@ -29,6 +29,23 @@ const Weather = ({ data, temp, max_temp, min_temp, name, icon }: WeatherProps) =
 const Item = styled.div`
   font-size: 14px;
   padding: 0 15px;
+  width: 13%;
+  border-radius: 5px;
+  position: relative;
+
+  &:before {
+    background: #fff;
+    opacity: .2;
+    content: ' ';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -6;
+  }
 `;
 
 const Img = styled.img`
