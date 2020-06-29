@@ -17,7 +17,7 @@ app.use(express.json())
 //Route Middlewares
 app.use('/api/weather', weatherRoute);
 
-app.get('/', (req, res) => res.send('EEe YEP '));
+app.get('/', (req, res) => res.send('Yep'));
 
 app.listen(PORT, () => {
     console.log('yep');

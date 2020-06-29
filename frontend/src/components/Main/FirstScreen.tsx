@@ -57,7 +57,6 @@ const FirstScreen = () => {
       }
       </Items>
 
-      
       <ButtonWrap>
         <Button 
           onClick={handleClick}
