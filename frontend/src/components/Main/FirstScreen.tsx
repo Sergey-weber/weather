@@ -13,6 +13,8 @@ type WeatherState = [{
   min_temp?: number;
   weather_state_name?: string;
   weather_state_abbr?: string;
+  wind_direction_compass?: string;
+  wind_speed?: number;
 }]
 
 const FirstScreen = () => {
@@ -59,6 +61,8 @@ const FirstScreen = () => {
                   min_temp={item.min_temp}
                   name={item.weather_state_name}
                   icon={item.weather_state_abbr}
+                  speed={item.wind_speed}
+                  direction={item.wind_direction_compass}
               />
             )
           })

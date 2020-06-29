@@ -9,9 +9,11 @@ interface WeatherProps {
   min_temp?: number;
   name?: string;
   icon?: string;
+  direction?: string;
+  speed?: number;
 }
 
-const Weather = ({ data, temp, max_temp, min_temp, name, icon }: WeatherProps) => {
+const Weather = ({ data, temp, max_temp, min_temp, name, icon, direction, speed }: WeatherProps) => {
   return (
     <Item>
       <p>Погода: {name}</p>
@@ -19,6 +21,8 @@ const Weather = ({ data, temp, max_temp, min_temp, name, icon }: WeatherProps) =
       <p>Температура: {temp}</p>
       <p>Максимальная температура: {Math.round(max_temp || 1)}</p>
       <p>Минимальная температура: {Math.round(min_temp || 1)}</p>
+      <p>Скорость ветра: {Math.round(speed || 1)}</p>
+      <p>Направление ветра ветра: {direction}</p>
       <p>
         <Img src={`https://www.metaweather.com/static/img/weather/${icon}.svg`} />
       </p>
