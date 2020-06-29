@@ -6,11 +6,19 @@ import { Button, CircularProgress} from '@material-ui/core';
 import { Weather } from './Weather';
 import img from './img/norw.jpg';
 
+type WeatherState = [{
+  applicable_date?: string;
+  the_temp?: number;
+  max_temp?: number;
+  min_temp?: number;
+  weather_state_name?: string;
+  weather_state_abbr?: string;
+}]
 
 const FirstScreen = () => {
   const [city, setCity] = useState<string | undefined>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [ weather, setWeather ] = useState<any>();
+  const [ weather, setWeather ] = useState<WeatherState>();
 
   const handleClick = async () => {
     setIsLoading(true);
