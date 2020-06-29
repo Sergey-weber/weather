@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const dotenv = require('dotenv');
 const cors = require('cors')
 
 app.use(cors());
@@ -9,8 +8,6 @@ app.use(express.urlencoded({ extended: false }));
 
 //Import Routes
 const weatherRoute = require('./routes/weather');
-
-dotenv.config();
 
 const PORT = 7000;
 
