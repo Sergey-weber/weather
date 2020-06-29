@@ -18,7 +18,7 @@ const Weather = ({ data, temp, max_temp, min_temp, name, icon, direction, speed 
     <Item>
       <p>Погода: {name}</p>
       <p>Дата: {data}</p>
-      <p>Температура: {temp}</p>
+      <p>Температура: {Math.round(temp || 1)}</p>
       <p>Максимальная температура: {Math.round(max_temp || 1)}</p>
       <p>Минимальная температура: {Math.round(min_temp || 1)}</p>
       <p>Скорость ветра: {Math.round(speed || 1)}</p>
