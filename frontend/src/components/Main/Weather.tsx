@@ -1,0 +1,40 @@
+import React from "react";
+
+import styled from 'styled-components';
+
+interface WeatherProps {
+  data?: string;
+  temp?: number;
+  max_temp?: number;
+  min_temp?: number;
+  name?: string;
+  icon?: string;
+}
+
+const Weather = ({ data, temp, max_temp, min_temp, name, icon }: WeatherProps) => {
+  return (
+    <Item>
+      <p>Погода: {name}</p>
+      <p>Дата: {data}</p>
+      <p>Температура: {temp}</p>
+      <p>Максимальная температура: {Math.round(max_temp || 1)}</p>
+      <p>Минимальная температура: {Math.round(min_temp || 1)}</p>
+      <p>
+        <Img src={`https://www.metaweather.com/static/img/weather/${icon}.svg`} />
+      </p>
+    </Item>
+  )
+};
+
+const Item = styled.div`
+  font-size: 14px;
+  padding: 0 15px;
+`;
+
+const Img = styled.img`
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+`;
+
+export { Weather }
