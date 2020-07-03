@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { createGlobalStyle } from 'styled-components'
@@ -15,27 +15,44 @@ type WeatherState = [{
   weather_state_abbr?: string;
   wind_direction_compass?: string;
   wind_speed?: number;
-}]
+}];
+
+const getIp = async () => {
+  const { data } = await axios.get('/weather/get-ip', {
+    headers: { 
+      'content-type': 'application/json',
+    }
+  });
+
+  return data;
+};
 
 const FirstScreen = () => {
   const [city, setCity] = useState<string | undefined>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [ weather, setWeather ] = useState<WeatherState>();
 
+  useEffect(() => {
+    getIp().then(ip => {
+      setCity(ip.city);
+    }).catch(e => {
+      throw e;
+    })
+  }, []);
+
   const handleClick = async () => {
     setIsLoading(true);
 
     try {
-      const { data } = await axios.get('/weather/latest', {
+      const { data } = await axios.get(`/weather/latest/${city}`, {
         headers: { 
           'content-type': 'application/json',
         }
       });
       
-      console.log('DATA front: ', data);
+      if(!city) setCity(data.title);
 
       setWeather(data.consolidated_weather);
-      setCity(data.title);
       setIsLoading(false);
     } catch(e) {
       throw e;
